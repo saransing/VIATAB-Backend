@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: viatab
   labels:
-    app:  viatab
+    app:  backend-viatab
 spec:
   selector:
     app: viatab
