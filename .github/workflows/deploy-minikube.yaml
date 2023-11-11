@@ -24,13 +24,13 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -f ./Dockerfile -t cicd-tabloid .
+          docker build -f ./Dockerfile -t backend/viatab .
           echo -n "Verifying images: "
           docker images
       - name: Deploy to Minikube
         run: |
-          kubectl apply -f deploy-cicd-tabloid.yaml
-          kubectl wait --for=condition=Ready pod -l app=cicd-tabloid
+          kubectl apply -f deploy-cicd.yaml
+          kubectl wait --for=condition=Ready pod -l app=backend/viatab
           kubectl get all
       - name: Test service URLs
         run: |
