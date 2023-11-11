@@ -5,7 +5,7 @@ metadata:
   labels:
     app: viatab
 spec:
-  replicas: 2 # pod count
+  replicas: 2
   selector:
     matchLabels:
       app: viatab
@@ -18,11 +18,12 @@ spec:
       containers:
         - name: viatab
           image: backend/viatab:latest
-          imagePullPolicy: Never #IfNotPresent
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
+
 ---
-  apiVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: viatab
