@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   name: viatab
   labels:
-    app: viatab
+    app: viatab   # Update this label value
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: viatab
+      app: viatab   # Update this label value
   template:
     metadata:
       name: viatab
       labels:
-        app: viatab
+        app: viatab   # Update this label value
     spec:
       containers:
         - name: viatab
@@ -28,10 +28,10 @@ kind: Service
 metadata:
   name: viatab
   labels:
-    app: viatab
+    app: viatab   # Update this label value
 spec:
   selector:
-    app: viatab
+    app: viatab   # Update this label value
   ports:
     - protocol: "TCP"
       port: 8080
