@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viatab
+  labels:
+    app: viatab
+spec:
+  replicas: 2 # pod count
+  selector:
+    matchLabels:
+      app: viatab
+  template:
+    metadata:
+      name: viatab
+      labels:
+        app: viatab
+    spec:
+      containers:
+        - name: viatab
+          image: backend/viatab:latest
+          imagePullPolicy: Never #IfNotPresent
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: viatab
+  labels:
+    app:  viatab
+spec:
+  selector:
+    app: viatab
+  ports:
+    - protocol: "TCP"
+      port: 8080 # where the service is running
+      targetPort: 8080 # the port exposed by the service
+  type: NodePort # type of service
